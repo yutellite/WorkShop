@@ -1,0 +1,33 @@
+<1108 linux6 [ywx] :/onip/ywx/gtest/googletest-master/googletest/usr/memcpy_s>gcc binarytree.c -g
+<1109 linux6 [ywx] :/onip/ywx/gtest/googletest-master/googletest/usr/memcpy_s>./a.out
+Err. Cannot insert a duplicate key 5.
+Err. Cannot insert a duplicate key 2.
+Err. Cannot insert a duplicate key 4.
+Err. Cannot insert a duplicate key 8.
+0 5 2 1 4 8 7 6 9 12 
+0 1 2 4 5 6 7 8 9 12 
+1 4 2 6 7 12 9 8 5 0 
+before delete
+the depth is 5
+the ldepth is 0
+the rdepth is 4
+the count node is 10
+the tree is not balanced.
+mirror tree
+0 5 8 9 12 7 6 2 4 1 
+12 9 8 7 6 5 4 2 1 0 
+12 9 6 7 8 4 1 2 5 0 
+12 9 6 7 8 4 1 2 5 0 
+after delete
+
+the depth is 0
+the count node is 0
+Err. Cannot insert a duplicate key 5.
+Err. Cannot insert a duplicate key 11.
+Err. Cannot insert a duplicate key 23.
+the tree is balanced.
+8 
+5 12 
+2 6 10 18 
+1 4 null 7 9 11 15 23 
+null null null null null null null null null null null null null 19 null 
