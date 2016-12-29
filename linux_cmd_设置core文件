@@ -1,0 +1,50 @@
+ulimint -a 用来显示当前的各种用户进程限制
+
+设置个Linux用户的最大进程数，一些需要设置为无限制：
+数据段长度：ulimit -d unlimited
+最大内存大小：ulimit -m unlimited
+堆栈大小：ulimit -s unlimited
+
+我们在用这个命令的时候主要是为了产生core文件，就是程序运行发行段错误时的文件：
+
+
+修改/etc/security/limits.conf
+
+#<domain>      <type>  <item>         <value>
+下插入
+ywx            -        core            -1
+
+登录个人用户
+sh登录
+ulimit -c unlimited  
+
+查看限制情况
+
+ulimit -a
+
+ulimit用于shell启动进程所占用的资源.
+
+
+
+在当前文件夹下会产生core文件，gdb pragram.o（程序） core文件名
+
+gdb调试时，
+Ctrl+x+a打开源码窗口
+
+修改core文件产生路径为当前core的路径，而不是决定路径
+查找更多记录李朝南(l00203876) 2016-03-09 21:31
+cat /proc/sys/kernel/core_pattern
+/home/corefile/core-%e-%p-%t
+执行：
+sysctl -w "kernel.core_pattern=core.%p.%u.%e.%t"//立即生效，但不持久化
+
+%p - insert pid into filename #添加pid
+%u - insert current uid into filename #添加当前uid
+%g - insert current gid into filename #添加当前gid
+%s - insert signal that caused the coredump into the filename #添加导致产生core的信号
+%t - insert UNIX time that the coredump occurred into filename #添加core文件生成时的unix时间
+%h - insert hostname where the coredump happened into filename #添加主机名
+%e - insert coredumping executable name into filename
+
+修改/etc/sysctl.conf文件，添加：//持久生效，但需重启生效
+kernel.core_pattern = core.%p.%u.%e.%t
