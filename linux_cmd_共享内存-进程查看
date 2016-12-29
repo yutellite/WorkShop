@@ -1,0 +1,71 @@
+1% ipcs -mp | head -3 ; ipcs -mp | grep -v grep | grep FastC52_B6
+
+------ Shared Memory Creator/Last-op PIDs --------
+shmid      owner      cpid       lpid      
+100466893  FastC52_B6 18018      29334    
+100499662  FastC52_B6 18018      29334    
+100565199  FastC52_B6 18018      5320      
+107938000  FastC52_B6 2410       2410      
+107970769  FastC52_B6 2410       2410      
+100663506  FastC52_B6 18018      2410      
+100696275  FastC52_B6 18018      2410      
+100729044  FastC52_B6 18018      2410      
+100761813  FastC52_B6 18018      2410      
+108003542  FastC52_B6 2410       2410      
+108036311  FastC52_B6 2410       2410      
+108069080  FastC52_B6 2410       2410      
+108101849  FastC52_B6 2410       2410      
+100925658  FastC52_B6 18018      2410      
+100958427  FastC52_B6 18018      2410      
+100991196  FastC52_B6 18018      2410      
+101023965  FastC52_B6 18018      2410      
+108134622  FastC52_B6 2410       2410      
+108167391  FastC52_B6 2410       2410      
+101122272  FastC52_B6 18018      2410      
+101155041  FastC52_B6 18018      2410      
+101187810  FastC52_B6 18018      2410      
+101220579  FastC52_B6 18018      2410      
+101515492  FastC52_B6 24044      5320      
+108200165  FastC52_B6 2410       19090    
+108232934  FastC52_B6 2410       29334    
+101941482  FastC52_B6 1307       1255
+
+2%ipcs -m | head -3 ; ipcs -m | grep -v grep | grep FastC52_B6
+
+------ Shared Memory Segments --------
+key        shmid      owner      perms      bytes      nattch     status      
+0x1b730000 100466893  FastC52_B6 660        2262096    3                 locked
+0x1b730001 100499662  FastC52_B6 660        31457280   3                 locked
+0x1b730004 100565199  FastC52_B6 660        163840     1                 locked
+0x1b730002 107938000  FastC52_B6 660        433205504  1                 locked
+0x1b730003 107970769  FastC52_B6 660        99172656   1                 locked
+0x1b7303e8 100663506  FastC52_B6 660        8388608    1                 locked
+0x1b730bb8 100696275  FastC52_B6 660        8192       1                 locked
+0x1b7303e9 100729044  FastC52_B6 660        8388608    1                 locked
+0x1b730bb9 100761813  FastC52_B6 660        8192       1                 locked
+0x1b7303ea 108003542  FastC52_B6 660        8388608    1                 locked
+0x1b7303ee 108036311  FastC52_B6 660        8388608    1                 locked
+0x1b730bba 108069080  FastC52_B6 660        8192       1                 locked
+0x1b7303eb 108101849  FastC52_B6 660        8388608    1                 locked
+0x1b7303ec 100925658  FastC52_B6 660        8388608    1                 locked
+0x1b730bbc 100958427  FastC52_B6 660        8192       1                 locked
+0x1b7303ed 100991196  FastC52_B6 660        8388608    1                 locked
+0x1b730bbd 101023965  FastC52_B6 660        8192       1                 locked
+0x1b730bbe 108134622  FastC52_B6 660        8192       1                 locked
+0x1b730bbb 108167391  FastC52_B6 660        8192       1                 locked
+0x1b7303ef 101122272  FastC52_B6 660        8388608    1                 locked
+0x1b730bbf 101155041  FastC52_B6 660        8192       1                 locked
+0x1b7303f0 101187810  FastC52_B6 660        8388608    1                 locked
+0x1b730bc0 101220579  FastC52_B6 660        8192       1                 locked
+0x1b730006 101515492  FastC52_B6 660        7816       1                 locked
+0x1b730008 108200165  FastC52_B6 600        270336     1                 locked
+0x1b730005 108232934  FastC52_B6 660        67277016   3                 locked
+0x1b730007 101941482  FastC52_B6 660        416        0                 locked
+
+3%ps | head -1;grep 100466893 /proc/*/maps | awk -F "/" '{print $3}' | xargs -i ps --no-headers -p {}
+ PID TTY          TIME CMD
+13295 pts/6    00:00:02 gmsql
+19090 ?        00:00:09 gmoam
+2410 ?        00:01:22 gmserver
+
+
