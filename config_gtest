@@ -1,0 +1,35 @@
+gtest环境配置：
+
+一、总体环境
+
+1、HOME目录下.bashrc添加
+source ~/gtest/googletest-master/config/env.sh
+
+source ~/gtest/googletest-master/config/env.csh
+2、包直接解压为
+$HOME/gtest
+
+二、安装环境图示
+<1038 linux6 [ywx] :/onip/ywx/gtest/googletest-master>ls
+CMakeLists.txt  README.md  appveyor.yml  config  googlemock  googletest  travis.sh
+
+三、环境配置文件
+1、csh
+/onip/ywx/gtest/googletest-master/config/env.csh
+
+#!/usr/bin/csh
+
+setenv GTEST_DIR ${HOME}/gtest/googletest-master/googletest
+
+alias gtest "cd ${GTEST_DIR}"
+alias gtcfg "cd ${GTEST_DIR}/../config"
+~
+
+2、bash
+/onip/ywx/gtest/googletest-master/config/env.sh
+#!/bin/sh
+
+export GTEST_DIR=${HOME}/gtest/googletest-master/googletest
+
+alias gtest="cd ${GTEST_DIR}"
+alias gtcfg="cd ${GTEST_DIR}/../config"
