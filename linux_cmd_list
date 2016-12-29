@@ -7,6 +7,7 @@ linux命令
 6、查看与删除共享内存
 7、绑定虚拟网卡、浮动ip
 8、查看系统shell cat /etc/shells
+9、双机信任关系建立，ssh对端不用输yes和密码
 
 
 linux系统编程
@@ -29,6 +30,7 @@ linux系统编程
 17、获取系统时间，两种，一种获取从开机到目前的相对时间，用户改变系统时间不影响时间处理判断，二获取系统时间，可能会被系统时间改动影响
 18、memcpy，越界，地址重复
 19、sprintf，越界后最后一位不能保证有\0
+20、printf打印对齐，%-8u
 
 
 脚本
@@ -43,7 +45,21 @@ linux系统编程
 工具使用
 1、gvim
 2、atom和ctags来完成脚本调用查看
-3、
+    ctags.exe -R --language-force=sh *
+3、source insight、pclint
+4、wins cgwin
+5、secureCRT
+6、Notepad++
+7、比较Mybase desktop，破解，nyfedit.ini中的App.UserLic.FirstUseOn，将这个时间戳随新的改变
 
 其他
 1、字符编码。ascii码、unicode、utf-8
+2、MySQL开发实践8问，你能hold住几个？
+3、高性能服务器架构思路（三）-分布式系统概念
+4、万亿级调用下的优雅-微信序列号生成器架构设计及演变
+
+技术网站
+1、stackoverflow.com   google  site://stackoverflow.com 搜索特定网站内容
+2、Leet Code 网络oj
+3、quora-英文版知乎
+4、cplusplus.com-c++所有api网站
