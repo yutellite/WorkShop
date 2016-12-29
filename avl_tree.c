@@ -125,6 +125,32 @@ void mirror(TreeNode*root)
     root->left=root->right;
     root->right=temp;
 }
+void printgivenlevel(TreeNode* T, int level)
+{
+    if(T==NULL)
+    {
+        printf("null ");
+        return;
+    }
+    if(level==1)
+        printf("%d ",T->key);
+    else
+    {
+        printgivenlevel(T->left,level-1);
+        printgivenlevel(T->right,level-1);
+    }
+}
+
+void levelOrder(TreeNode* T)
+{
+    int h=height(T);
+    int i=0;
+    for(i=1;i<=h;i++)
+    {
+        printgivenlevel(T,i);
+        printf("\n");
+    }
+}
 
 int countNode(TreeNode* root)
 {
@@ -166,7 +192,7 @@ TreeNode* leftrotate(TreeNode* z)
     
     //perform rotation
     y->left=z;
-    z->right=t2
+    z->right=t2;
     
     z->height=max(height(z->left),height(z->right))+1;
     y->height=max(height(y->left),height(y->right))+1;
@@ -188,10 +214,10 @@ TreeNode* rightrotate(TreeNode*z)
     
     //perform rotation
     y->right=z;
-    z->left=t3
+    z->left=t3;
     
-    y->height=max(depth(y->left),depth(y->right))+1;
-    z->height=max(depth(z->left),depth(z->right))+1;
+    z->height=max(height(z->left),height(z->right))+1;    
+    y->height=max(height(y->left),height(y->right))+1;
     return y;
 }
 
@@ -208,9 +234,9 @@ TreeNode* insertbalance(TreeNode* node, int key)
     if(node==NULL)
         return newnode(key);
     if(key<node->key)
-        insertbalance(node->left,key);
+        node->left=insertbalance(node->left,key);
     else if(key>node->key)
-        insertbalance(node->right,key);
+        node->right=insertbalance(node->right,key);
     else
     {
         printf("Err. Cannot insert a duplicate key %d.\n",key);
@@ -220,7 +246,7 @@ TreeNode* insertbalance(TreeNode* node, int key)
     node->height=1+max(height(node->left),height(node->right));
     
     //3.get the balace factor of this ancestor node to check whether this node became unbalanced.
-    int balance=getbalance();
+    int balance=getbalance(node);
     
     //4.if this node becomes unbalanced, then there are 4 cases
     
@@ -238,7 +264,7 @@ TreeNode* insertbalance(TreeNode* node, int key)
     if(balance<-1 && key>node->right->key)
         return leftrotate(node);
     //right left case
-    if(balace<-1 && key<node->right->key)
+    if(balance<-1 && key<node->right->key)
     {
         node->right=rightrotate(node->right);
         return leftrotate(node);
@@ -288,7 +314,8 @@ T2 orT3                           T3   T4
 int main()
 {   
     int depth=0;
-    TreeNode* root=NULL;    
+    TreeNode* root=NULL; 
+    TreeNode* rootbalance=NULL;    
     insert(&root,0);
     insert(&root,5);
     insert(&root,8);
@@ -337,5 +364,27 @@ int main()
     printf("\n");
     printf("the depth is %d\n",MaxDepth(root));
     printf("the count node is %d\n",countNode(root));
+    
+    rootbalance=insertbalance(rootbalance,1);
+    rootbalance=insertbalance(rootbalance,9);
+    rootbalance=insertbalance(rootbalance,23);
+    rootbalance=insertbalance(rootbalance,5);
+    rootbalance=insertbalance(rootbalance,8);
+    rootbalance=insertbalance(rootbalance,6);
+    rootbalance=insertbalance(rootbalance,2);
+    rootbalance=insertbalance(rootbalance,4);
+    rootbalance=insertbalance(rootbalance,10);
+    rootbalance=insertbalance(rootbalance,11);
+    rootbalance=insertbalance(rootbalance,12);
+    rootbalance=insertbalance(rootbalance,7);
+    rootbalance=insertbalance(rootbalance,15);    
+    rootbalance=insertbalance(rootbalance,5);
+    rootbalance=insertbalance(rootbalance,11);
+    rootbalance=insertbalance(rootbalance,23);
+    rootbalance=insertbalance(rootbalance,18);
+    rootbalance=insertbalance(rootbalance,19);
+    printf("the tree is %sbalanced.\n",isbalanced(rootbalance)?"":"not ");
+    levelOrder(rootbalance);
+    printf("\n");
     return 0;
 }
