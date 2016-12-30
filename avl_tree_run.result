@@ -1,3 +1,9 @@
+1. DEBUG Version
+gcc -o binarytree binarytree.c -DDEBUG -g
+
+2. Release Version
+gcc -o binarytree binarytree.c
+
 <1152 linux6 [ywx] :/onip/ywx/gtest/googletest-master/googletest/usr/memcpy_s>gcc -o binarytree binarytree.c -DDEBUG -g
 <1153 linux6 [ywx] :/onip/ywx/gtest/googletest-master/googletest/usr/memcpy_s>./binarytree
 Err. Cannot avl_insert a duplicate key 5.
