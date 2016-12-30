@@ -1,3 +1,9 @@
+1. DEBUG Version
+gcc -o binarytree binarytree.c -DDEBUG -g
+
+2. Release Version
+gcc -o binarytree binarytree.c
+
 <1108 linux6 [ywx] :/onip/ywx/gtest/googletest-master/googletest/usr/memcpy_s>gcc binarytree.c -g
 <1109 linux6 [ywx] :/onip/ywx/gtest/googletest-master/googletest/usr/memcpy_s>./a.out
 Err. Cannot insert a duplicate key 5.
