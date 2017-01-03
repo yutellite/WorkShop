@@ -1,0 +1,38 @@
+1 the web http://gauss.ececs.uc.edu/RedBlack/redblack.html
+
+Red/Black Tree Demonstration
+
+Red/Black Trees:
+   	These are binary trees with the following properties.
+1 Every node has a value.
+2 The value of any node is greater than the value of its left child and less than the value of its right child.
+3 Every node is colored either red or black.
+4 Every red node that is not a leaf has only black children.
+5 Every path from the root to a leaf contains the same number of black nodes.
+6 The root node is black.
+
+An n node red/black tree has the property that its height is O(lg(n)). Another important property is that a node can be added to a red/black tree and, in O(lg(n)) time, the tree can be readjusted to become a larger red/black tree. Similarly, a node can be deleted from a red/black tree and, in O(lg(n)) time, the tree can be readjusted to become smaller a red/black tree. Due to these properties, red/black trees are useful for data storage.
+
+Insertion Rules:
+   	When a node is inserted in the tree it is given the color red. This does not affect the black node count on any path to a leaf. But it could lead to a single pair of consecutive red nodes in the tree. If the new node becomes a child of a black node there is no problem. But it may become a child of a red node. The double red violation will begin at a leaf. The rules below are designed to move the double violation up toward the root without affecting any path's black node count until it can be eliminated by bringing down a black from above or it reaches the root where it can be eliminated since the root can be colored black without consequence.
+Let current refer to the red node that has a red child thereby identifying the location of the violation. The parent of current will always be black. The list below shows all possible states for current. The insertion algorithm performs the action associated with the correct state and either terminates or repeats.
+
+
+ current's sibling is red
+    30r
+    /
+  27b
+  /\
+25r 28r
+ \
+ 26r
+ 
+     30r
+    /
+  27r
+  /\
+25b 28b
+ \
+ 26r
+ current is node number 25 in the picture on the left. The result is shown at the right. current is changed to node number 30.
+ <1>action:since the parent is black and current is red, current and its sibling may be colored black and the parent may colord red without affectiong the number of blacks on any path to a leaf. In addition, this eliminates the double red below the parent but may cause a double red above the parent. Hence, set current to the parent of the parent and continue to <4>.
