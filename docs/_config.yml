@@ -1,24 +1,20 @@
+# Name of your blog (this will show up at the top of your page and in the RSS feed)
+name: yutellite's Blog
+
 title: yutellite
+
 email: yutellite@126.com
-description: think once or twice more of your life which are happy, ignore the most painful time of your life. 
+
+# Short description (goes below the title; it will also be used in the RSS feed)
+description: This is yutellite's Blog. Life is not easy, so think twice about the happy time of your life and none about the painful time.
+
+# Your name, as you want it to appear underneath each post and in the footer
+author: yutellite
+
+# The URL of your actual domain. This will be used to make absolute links in the RSS feed.
 url: https://yutellite.github.io/workshop/
 
-gems:
-    - jekyll-redirect-from
-    - jekyll-sitemap
-    - jekyll-seo-tag
-    - jekyll-feed
-    - jemoji
-
-sass:
-    style: compressed
-collections:
-    docs: {output: true, permalink: '/docs/:path/'}
-    
-defaults:
-    - {scope: {type: docs}, values: {layout: docs}}
-    - {scope: {type: posts}, values: {layout: post, permalink: '/blog/:year/:month/:day/:title'}}
-    - {scope: {path: ""}, values: {image: {path: /images/opengraph.png, width: 1200, height: 630}}}
+# Exclude metadata and development time dependencies (like Grunt plugins)
 exclude:
     - node_modules
     - README.md
@@ -30,9 +26,3 @@ exclude:
     - package.json
     - script
     - spec
-include:
-    - _pages
-google_site_verification: eOAFtDphTbbm4OPKva2d3Z0Z_2bBxWMGdkD0IRQ6VeA
-twitter:
-    username: ElectronJS
-logo: /images/opengraph.png
