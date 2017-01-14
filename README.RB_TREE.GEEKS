@@ -52,7 +52,7 @@ All four cases when Uncle is BLACK
                 uncle black and left left case
                 1 right rotate g
                 2 swap colors of g and p
-            g(b)                            p(b)
+            g(b)                           p(b)
           /   \                           /   \
          p(r)  u(b) --------------->     x(r)   g(r) 
        /   \  /  \                     /   \   /  \
@@ -61,4 +61,62 @@ All four cases when Uncle is BLACK
    T1b   T2b                                     T4b  T5b
                 x: current node, p:parent, u:uncle node, g:grandparent
                 T1,T2,T3,T4 and T5 are subtrees
-   
+                
+(2)Left Right Case(see g,p and x)                
+                uncle black and Left Right case
+                1 left rotate p
+                2 Apply Left Left Case(above)
+                
+            g(b)                           g(b)                        xb
+          /   \                           /   \                       /  \
+         p(r)  u(b) --------------->     x(r) u(b)  -------------->  pr   gr
+       /   \  /  \                      /   \ /  \                  / \   / \
+      T1r  xr T4b T5b                 pr   T3bT4b T5b             T1b T2bT3b ub
+          /  \                       / \                                    / \
+         T2b T3b                   T1b T2b                                 T4b T5b
+                x: current node, p:parent, u:uncle node, g:grandparent
+                T1,T2,T3,T4 and T5 are subtrees
+
+(3)Right Right Case(see g,p and x)                
+                uncle black and Right Right case
+                Mirror of Left Left Case
+                1 left rotate g
+                2 swap colors of g and p
+            g(b)                            p(b)
+          /   \                           /   \
+         u(b)  p(r) --------------->     g(r)  x(r) 
+       /   \  /  \                     /   \   /  \
+      T1b T2b T3b xr                  ub   T3bT4b T5(b)
+                 /  \                /  \
+               T4b T5b              T1b T2b
+                x: current node, p:parent, u:uncle node, g:grandparent
+                T1,T2,T3,T4 and T5 are subtrees
+                
+(4)Right Left Case(see g,p and x)                
+                uncle black and Right left case
+                Mirror of Left Right Case
+                1 right rotate p
+                2 Apply Right Right Case
+            g(b)                            g(b)                         xb
+          /   \                           /   \                         /   \
+        u(b)  p(r) --------------->     u(b)   x(r) -------------->    gr    pr
+       /   \   / \                     /   \   /  \                  /   \   /  \
+      T1b T2b xr T5b                 T1b T2b T3b  p(r)              ub   T3bT4b T5b
+             / \                                  /  \             / \
+           T3b T4b                               T4b  T5b         T1bT2b
+                x: current node, p:parent, u:uncle node, g:grandparent
+                T1,T2,T3,T4 and T5 are subtrees       
+
+Examples of Insertion  
+        Insert 10,20,30 and 15 in an empty tree
+        ---------> 10b -------> 10b p-------->10b g                     20b
+        insert 10     insert 20 \    insert 30 \       right right     /  \
+        case 30                 20r x           20r p ----------->    10r  30r
+        x is root                                \
+                                                 30r x                  \|/ insert 15
+                                                                        
+                                         20b              20r             20b g
+                                        / \  x is root    / \            /  \
+                                      10b  30b -----    10b  30b    - p 10r 30r
+                                        \                \              \
+                                        15r              15r           x 15r
